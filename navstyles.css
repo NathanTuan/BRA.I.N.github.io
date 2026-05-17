@@ -1,0 +1,235 @@
+:root {
+  --soft-color: rgb(159, 159, 159);
+  --accent-color: /*rgb(159, 72, 184);*/#8EB897;
+  --deep-accent-color: #5B7553;
+  --soft-border-color: #151515;
+  --medium-border-color: #252525;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+    overflow-x:hidden;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+    font-family: "Space Grotesk", sans-serif;
+    background-color: #000000;
+    overflow-x: hidden;
+}
+
+.star {
+    position: fixed;
+    width: 1px;
+    height: 1px;
+    background: white;
+    opacity: 0.6;
+    animation: twinkle 3s infinite;
+    z-index: -1;
+
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 1; }
+}
+
+
+
+.navbar{
+    width: 90%;
+    height: 12vh;
+    background-color: #000000;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    border-radius: 999px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: var(--medium-border-color);
+    position: relative;
+    z-index:1;
+    margin:none;
+    margin-top: 2vh;
+
+    animation: expand 1.2s ease-out;
+    animation-fill-mode: backwards;
+    animation-delay:0.3s;
+}
+
+
+@keyframes expand {
+    from {
+        opacity: 0;
+        transform: scaleX(0.1);
+    }
+
+    to {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+.navbar ul {
+    list-style-type: none;
+    width:100%;
+    margin: 0;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    /*background-color: #cb7777;*/
+    gap: clamp(5px, 1vw, 60px);
+}
+
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: clamp(5px, 1vw, 10px);
+}
+
+.navbar ul li img {
+    width: clamp(10px, 3vw, 40px);
+    height:auto;
+    margin-left:2vw;
+    margin-right: 25vw;
+}
+
+.navbar ul li p{
+    color:white;
+    font-size: clamp(10px, 1.25vw, 20px);
+    padding-right: 20vw;
+    font-weight: 600;
+}
+
+
+.navbar ul li a {
+    color: var(--soft-color);
+    text-decoration: none;
+    font-size: clamp(5px, 1vw, 20px);
+    position: relative;
+    display: flex;
+    overflow:hidden;
+    background: rgb(0, 0, 0);
+    transition: background 0.3s ease;
+    padding:1.5vh 2vw;
+    border-radius: 999px;
+    z-index:1
+}
+
+.navbar ul li a:hover {
+    /*background:white;
+    scale:1.1;*/
+    color: black;
+}
+
+.navbar ul li a.home-button {
+    background: var(--accent-color);
+    color: white;
+    margin-right: 1vw;
+    opacity:1;
+}
+
+.navbar ul li a.home-button:hover {
+    color: black;
+    /* scale:1.1;*/
+}
+
+.navbar ul li a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    top: 0;
+    left: 0;
+
+
+    transform: scaleX(0);
+    height: 100%;
+
+    background: rgb(255, 255, 255);
+    transition: transform 0.4s ease;
+    border-radius:999px;
+    z-index: -1;
+    transform-origin: center;
+}
+
+.navbar ul li a:hover::before {
+    transform: scaleX(1);
+}
+
+
+.star-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+
+
+.sliders {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    z-index: 10;
+    pointer-events:none;
+    inset:0;
+}
+
+
+
+/* both panels */
+.sliders .left-slider,
+.sliders .right-slider {
+    width: 50%;
+    height: 100%;
+    background: #570c63;
+    opacity: 0.6;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #a3328a;
+}
+
+/* directions */
+.sliders .left-slider {
+    animation-name: slideLeft;
+}
+
+.sliders .right-slider {
+    animation-name: slideRight;
+}
+
+/* animations */
+@keyframes slideLeft {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-110%); }
+}
+
+@keyframes slideRight {
+    from { transform: translateX(0); }
+    to   { transform: translateX(110%); }
+}
+
+
+
+@keyframes zoomIn {
+
+    0% { background-size: 150%; }
+    100% { background-size: 100%; }
+}
