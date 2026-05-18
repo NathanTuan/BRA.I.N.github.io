@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>brAIn - Detecting brain tumors with precision, powered by A.I.</title>
+    <meta name="description" content="Free Brain Tumor Detector">
+    <meta name="author" content="Nathan Tuan">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="detectnavstyles.css">
+    <link rel="stylesheet" href="detectstyles.css">
+    <link rel="stylesheet" href="scrollbarstyles.css">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Oxanium:wght@200..800&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <!--favicon-->
+    <link rel="icon" href="Favicon.png">
+</head>
+
+<body>
+    <div class="sliders">
+        <div class="left-slider"></div>
+        <div class="right-slider"></div>
+    </div>
+    <nav class="navbar">
+        <ul>
+            <li class="logo-container">
+                <img src="Favicon.png" class="logo">
+                <!--<p>brA.I.nTD</p>-->
+            </li>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="detect.html" class="detect-nav-button">DETECT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+    <div class="star-layer"></div>
+    <div class="main-content">
+        <div class="possible-line">
+            <h1>Getting Started</h1>
+            <!--<h2>Detecting brain tumors with precision, powered by A.I.</h2>-->
+            <p> Simply upload your brain MRI scan, and our advanced A.I. model will return an accurate diagnosis. 
+                Wait times may vary based on server load (typically 30 seconds to 5 minutes). For best results, please upload a clear MRI scan of the brain.
+            </p>
+            <button class="upload-button">Upload MRI Scan</button>
+        </div>
+    </div>
+
+    
+
+    <footer>
+        <p>&copy; 2026 Brain Tumor Detector | All Rights Reserved | Disclaimer: Not a substitute for professional medical diagnosis.</p>
+    </footer>
+
+
+    <script>
+        // star-background generation
+        const starCount = 100;
+        const starLayer = document.querySelector(".star-layer");
+
+        for (let i = 0; i < starCount; i++) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+
+            star.style.left = Math.random() * 100 + "vw";
+            star.style.top = Math.random() * 100 + "vh";
+
+            // random size for depth
+            const size = Math.random() + 0.5;
+            star.style.width = size + "px";
+            star.style.height = size + "px";
+
+            // random twinkle delay so they don't sync
+            star.style.animationDelay = Math.random() * 3 + "s";
+
+            starLayer.appendChild(star);
+        }
+
+
+        // removing starter sliders
+        window.addEventListener("load", () => {
+            const sliders = document.getElementById("sliders");
+
+            setTimeout(() => {
+                sliders.remove();
+                document.body.style.overflow = "auto";
+            }, 1100);
+         });
+    </script>
+</body>
+</html>
