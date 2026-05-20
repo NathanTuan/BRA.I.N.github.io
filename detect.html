@@ -46,15 +46,22 @@
     <div class="main-content">
         <div class="possible-line">
             <h1>Getting Started</h1>
-            <!--<h2>Detecting brain tumors with precision, powered by A.I.</h2>-->
             <p> Simply upload your brain MRI scan, and our advanced A.I. model will return an accurate diagnosis. 
                 Wait times may vary based on server load (typically 30 seconds to 5 minutes). For best results, please upload a clear MRI scan of the brain.
             </p>
-            <button class="upload-button">Upload MRI Scan</button>
+        </div>
+        <div class="upload-section">
+            <div class="image-display">
+                <img id="preview" style="display:none;">
+                <canvas id="overlay"></canvas>
+            </div>
+            <input type="file" id="myFile" accept="image/*">
+            <button id="analyze-button">Analyze MRI</button>
+
+            <div id="resultText"></div>
         </div>
     </div>
 
-    
 
     <footer>
         <p>&copy; 2026 Brain Tumor Detector | All Rights Reserved | Disclaimer: Not a substitute for professional medical diagnosis.</p>
@@ -95,5 +102,6 @@
             }, 1100);
          });
     </script>
+    <script src="app.js"></script>
 </body>
 </html>
