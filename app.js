@@ -7,6 +7,20 @@ const canvas = document.getElementById("overlay");
 const ctx = canvas.getContext("2d");
 const resultText = document.getElementById("resultText");
 
+function resizeCanvas() {
+    canvas.width = preview.clientWidth;
+    canvas.height = preview.clientHeight;
+}
+
+window.addEventListener("resize", () => {
+    resizeCanvas();
+
+    // redraw boxes after resize
+    if (window.lastDetections) {
+        drawBoxes(window.lastDetections);
+    }
+});
+
 const classNames = {
     0: "No Tumor",
     1: "Tumor"
@@ -28,8 +42,7 @@ analyzeButton.addEventListener("click", async () => {
     preview.style.display = "block";
 
     preview.onload = async () => {
-        canvas.width = preview.clientWidth;
-        canvas.height = preview.clientHeight;
+        resizeCanvas();
 
         const response = await fetch(
             "https://brain-website-backend.onrender.com/predict",
@@ -42,6 +55,7 @@ analyzeButton.addEventListener("click", async () => {
         const data = await response.json();
         console.log("detections:", data.detections);
 
+        window.lastDetections = data.detections; 
         drawBoxes(data.detections);
         showResults(data.detections);
     };

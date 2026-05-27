@@ -81,7 +81,7 @@
 }
 
 .upload-section {
-    background-color:#151515;
+    background-color: transparent;
     width:clamp(280px, 40%, 700px);
     height:40%;
     display:flex;
@@ -96,12 +96,19 @@
     border-width: 2px;
     border-color: #ffffff;
     position: relative;
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 
 #preview {
-    display: block;
-    max-width: 640px;
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    width:clamp(280px, 100%, 640px);
+    height:auto;
+    object-fit:contain;
 }
 
 #overlay {
@@ -109,6 +116,9 @@
     left: 0;
     top: 0;
     pointer-events: none;
+    background-color: transparent;
+    height:100%;
+    width: 100%;
 }
 
 
